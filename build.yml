@@ -1,0 +1,28 @@
+resources:
+  repositories:
+    - repository: Pipelines
+      type: git
+      name: "Dimaros.Pipelines"
+
+trigger:
+  branches:
+    include:
+      - "master"
+
+jobs:
+  - job: Build
+    displayName: "Build"
+    pool:
+      name: Azure Pipelines
+      vmImage: "windows-2019"
+
+    steps:
+      - template: Templates/dotnet-build-test-solution.yml@Pipelines
+        parameters:
+          RestoreBuildProjects: '**/**/*.csproj'
+          TestProjects: '**/**/*.Tests.csproj'
+          BuildConfiguration: 'Release'
+          BuildPlatform: 'Any CPU'
+          sonarProjectName: 'Markdown Wiki Taxonomy Generator'
+          sonarProjectKey: 'Dimaros.TaxonomyGenerator'
+          projectVersion: 'MASTER'

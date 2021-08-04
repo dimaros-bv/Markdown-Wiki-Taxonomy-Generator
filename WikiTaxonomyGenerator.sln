@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30709.132
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WikiTaxonomyGenerator", "WikiTaxonomyGenerator\WikiTaxonomyGenerator.csproj", "{07CC8139-7211-45D4-B53D-CDA438A68C59}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WikiTaxonomyGenerator.Tests", "WikiTaxonomyGenerator.Tests\WikiTaxonomyGenerator.Tests.csproj", "{0C523AEC-5BE2-4FD1-8D61-C84DFC52470E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{B1069C84-566D-4204-88DE-31C6F1BF9C06}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{07CC8139-7211-45D4-B53D-CDA438A68C59}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{07CC8139-7211-45D4-B53D-CDA438A68C59}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{07CC8139-7211-45D4-B53D-CDA438A68C59}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{07CC8139-7211-45D4-B53D-CDA438A68C59}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0C523AEC-5BE2-4FD1-8D61-C84DFC52470E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0C523AEC-5BE2-4FD1-8D61-C84DFC52470E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0C523AEC-5BE2-4FD1-8D61-C84DFC52470E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0C523AEC-5BE2-4FD1-8D61-C84DFC52470E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2C5A89FF-51C1-4A59-830F-99E2BB61EBBB}
+	EndGlobalSection
+EndGlobal

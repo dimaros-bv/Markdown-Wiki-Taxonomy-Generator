@@ -33,8 +33,10 @@ jobs:
       
       - task: PackageAzureDevOpsExtension@3
         inputs:
-          rootFolder: '$(Build.SourcesDirectory)'
-          outputPath: '$(Build.ArtifactStagingDirectory)\vsts-developer-tools-build-tasks.vsix'
+          rootFolder: 'Build.artifactstagingdirectory'
+          outputPath: 'Extension.OutputPath'
+          publisherId: 'dimaros'
           updateTasksVersion: true
-
-      
+          extensionVisibility: 'private'
+          extensionPricing: 'free'
+          zipAfterPublish: true

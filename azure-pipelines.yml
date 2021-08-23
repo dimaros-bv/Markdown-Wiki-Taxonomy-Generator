@@ -28,12 +28,18 @@ jobs:
           command: publish
           publishWebProjects: false
           projects: 'Release'
-          arguments: '--configuration Release --output $(Build.artifactstagingdirectory)'
+          arguments: '--configuration Release --output $(Build.ArtifactStagingDirectory)'
           zipAfterPublish: true
+
+      - task: PublishBuildArtifacts@1
+        displayName: "Publish Artifact"
+        inputs:
+          PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+        condition: succeededOrFailed()
       
       - task: PackageAzureDevOpsExtension@3
         inputs:
-          rootFolder: 'Build.artifactstagingdirectory'
+          rootFolder: 'Build.ArtifactStagingDirectory'
           outputPath: 'Extension.OutputPath'
           publisherId: 'dimaros'
           updateTasksVersion: true

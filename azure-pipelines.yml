@@ -27,7 +27,7 @@ jobs:
         inputs:
           command: publish
           publishWebProjects: false
-          projects: 'Release'
+          projects: '**/**/*.csproj'
           arguments: '--configuration Release --output $(Build.ArtifactStagingDirectory)'
           zipAfterPublish: true
 

@@ -1,0 +1,12 @@
+{
+    "manifestVersion": 1,
+    "id": "wiki-taxonomy-generator",
+    "version": "1.0.0",
+    "name": "Markdown Wiki Taxonomy Generator",
+    "publisher": "dimaros",
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ]
+}

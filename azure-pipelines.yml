@@ -31,12 +31,6 @@ jobs:
           arguments: '--configuration Release --output $(Build.ArtifactStagingDirectory)'
           zipAfterPublish: true
 
-      - task: PublishBuildArtifacts@1
-        displayName: "Publish Artifact"
-        inputs:
-          PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-        condition: succeededOrFailed()
-      
       - task: PackageAzureDevOpsExtension@3
         inputs:
           rootFolder: 'Build.ArtifactStagingDirectory'
@@ -46,3 +40,11 @@ jobs:
           extensionVisibility: 'private'
           extensionPricing: 'free'
           zipAfterPublish: true
+        
+      - task: PublishBuildArtifacts@1
+        displayName: "Publish Artifact"
+        inputs:
+          PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+        condition: succeededOrFailed()
+
+      

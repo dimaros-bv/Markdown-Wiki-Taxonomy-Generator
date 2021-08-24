@@ -7,6 +7,7 @@ jobs:
     pool:
       name: Azure Pipelines
       vmImage: "windows-2019"
+      demands: npm
     
     steps:
       - task: DotNetCoreCLI@2
@@ -30,6 +31,9 @@ jobs:
           arguments: '--configuration Release --output $(Build.ArtifactStagingDirectory)'
           zipAfterPublish: true
 
+      - task: TfxInstaller@3
+        inputs:
+          version: 'v0.9.x'
       - task: PackageAzureDevOpsExtension@3
         inputs:
           rootFolder: ' $(Build.ArtifactStagingDirectory)'

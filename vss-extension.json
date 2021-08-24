@@ -8,5 +8,23 @@
         {
             "id": "Microsoft.VisualStudio.Services"
         }
+    ],
+    "categories": [
+        "Azure Repos"
+    ],
+    "content": {
+        "details": {
+            "path": "README.md"
+        },
+        "license": {
+            "path": "LICENSE.md"
+        }
+    },
+    "repository": {
+        "type": "git",
+        "uri": "https://github.com/dimaros-bv/Markdown-Wiki-Taxonomy-Generator"
+    },
+    "scopes":[
+        "vso.code_manage"
     ]
 }

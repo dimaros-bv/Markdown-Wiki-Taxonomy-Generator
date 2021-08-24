@@ -1,0 +1,30 @@
+{
+    "manifestVersion": 1,
+    "id": "wiki-taxonomy-generator",
+    "version": "1.0.0",
+    "name": "Markdown Wiki Taxonomy Generator",
+    "publisher": "dimaros",
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],
+    "categories": [
+        "Azure Repos"
+    ],
+    "content": {
+        "details": {
+            "path": "README.md"
+        },
+        "license": {
+            "path": "LICENSE.md"
+        }
+    },
+    "repository": {
+        "type": "git",
+        "uri": "https://github.com/dimaros-bv/Markdown-Wiki-Taxonomy-Generator"
+    },
+    "scopes":[
+        "vso.code_write"
+    ]
+}

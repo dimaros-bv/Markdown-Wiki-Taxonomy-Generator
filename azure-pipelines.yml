@@ -41,16 +41,16 @@ jobs:
           version: 'v0.9.x'
       - task: PackageAzureDevOpsExtension@3
         inputs:
-          rootFolder: ' $(Build.ArtifactStagingDirectory)'
+          rootFolder: ' $(Build.SourcesDirectory)'
           outputPath: 'Extension.OutputPath'
           publisherId: 'dimaros'
           updateTasksVersion: true
           extensionVisibility: 'private'
           extensionPricing: 'free'
           zipAfterPublish: true
-        
+
       - task: PublishBuildArtifacts@1
         displayName: "Publish Artifact"
         inputs:
-          PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+          PathtoPublish: '$(Extension.OutputPath)'
         condition: succeededOrFailed()

@@ -10,6 +10,8 @@ jobs:
       demands: npm
     
     steps:
+      
+
       - task: DotNetCoreCLI@2
         displayName: Restore
         inputs:
@@ -31,6 +33,9 @@ jobs:
           arguments: '--configuration Release --output $(Build.ArtifactStagingDirectory)'
           zipAfterPublish: true
 
+      - task: NodeTool@0
+        inputs:
+          versionSpec: '10.x'
       - task: TfxInstaller@3
         inputs:
           version: 'v0.9.x'

@@ -42,7 +42,6 @@ jobs:
       - task: PackageAzureDevOpsExtension@3
         inputs:
           rootFolder: ' $(Build.ArtifactStagingDirectory)'
-          patternManifest: '**/vss-extension.json'
           outputPath: 'Extension.OutputPath'
           publisherId: 'dimaros'
           updateTasksVersion: true

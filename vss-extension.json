@@ -25,6 +25,6 @@
         "uri": "https://github.com/dimaros-bv/Markdown-Wiki-Taxonomy-Generator"
     },
     "scopes":[
-        "vso.code_manage"
+        "vso.code_write"
     ]
 }

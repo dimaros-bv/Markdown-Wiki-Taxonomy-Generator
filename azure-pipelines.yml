@@ -10,8 +10,6 @@ jobs:
       demands: npm
     
     steps:
-      
-
       - task: DotNetCoreCLI@2
         displayName: Restore
         inputs:
@@ -24,14 +22,14 @@ jobs:
           projects: '**/**/*.csproj'
           arguments: '--configuration Release'
       
-      - task: DotNetCoreCLI@2
-        displayName: Publish
-        inputs:
-          command: publish
-          publishWebProjects: false
-          projects: '**/**/*.csproj'
-          arguments: '--configuration Release --output $(Build.ArtifactStagingDirectory)'
-          zipAfterPublish: true
+      #- task: DotNetCoreCLI@2
+      #  displayName: Publish
+      #  inputs:
+      #    command: publish
+      #    publishWebProjects: false
+      #    projects: '**/**/*.csproj'
+      #    arguments: '--configuration Release --output $(Build.ArtifactStagingDirectory)'
+      #    zipAfterPublish: true
 
       - task: NodeTool@0
         inputs:

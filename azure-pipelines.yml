@@ -35,19 +35,18 @@ stages:
       - task: PackageAzureDevOpsExtension@3
         inputs:
           rootFolder: '$(Build.SourcesDirectory)'
-          outputPath: '$(System.DefaultWorkingDirectory)/extension'
+          outputPath: '$(Build.ArtifactStagingDirectory)'
           publisherId: 'dimaros'
           updateTasksVersion: true
           extensionVisibility: 'private'
           extensionPricing: 'free'
-          zipAfterPublish: false
-
+        
       - task: PublishBuildArtifacts@1
-        displayName: "Publish Artifact"
         inputs:
-          PathtoPublish: '$(System.DefaultWorkingDirectory)/extension'
+          PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+          ArtifactName: 'vsix'
         condition: succeededOrFailed()
-
+      
 - stage: Publish
   displayName: 'Publish to Marketplace'
   condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/main'))
@@ -61,6 +60,7 @@ stages:
       demands: npm
     
     steps:
+    - task
     - task: NodeTool@0
       inputs:
         versionSpec: '10.x'
@@ -68,10 +68,11 @@ stages:
     - task: TfxInstaller@3
       inputs:
         version: 'v0.9.x'
+
     - task: PublishAzureDevOpsExtension@3
       inputs:
         connectTo: 'VsTeam'
         connectedServiceName: 'Visual Studio Marketplace Service Connection'
         fileType: 'vsix'
-        vsixFile: '$(System.DefaultWorkingDirectory)/extension/*.vsix'
+        vsixFile: $(Build.ArtifactStagingDirectory)/vsix/*.vsix'
   

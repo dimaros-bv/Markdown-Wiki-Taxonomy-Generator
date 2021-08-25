@@ -58,8 +58,14 @@ stages:
       name: Azure Pipelines
       vmImage: "windows-2019"
       demands: npm
-    
+
     steps:
+    - task: DownloadBuildArtifacts@1
+      inputs:
+        buildType: 'current'
+        downloadType: 'single'
+        artifactName: 'vsix'
+        downloadPath: '$(System.ArtifactsDirectory)'
     - task: NodeTool@0
       inputs:
         versionSpec: '10.x'

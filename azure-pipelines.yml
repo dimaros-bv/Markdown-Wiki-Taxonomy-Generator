@@ -45,7 +45,7 @@ stages:
       - task: PublishBuildArtifacts@1
         displayName: "Publish Artifact"
         inputs:
-          PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+          PathtoPublish: '$(System.DefaultWorkingDirectory)/extension'
         condition: succeededOrFailed()
 
 - stage: Publish
@@ -73,5 +73,5 @@ stages:
         connectTo: 'VsTeam'
         connectedServiceName: 'Visual Studio Marketplace Service Connection'
         fileType: 'vsix'
-        vsixFile: '$(Build.ArtifactStagingDirectory)/*.vsix'
+        vsixFile: '$(System.DefaultWorkingDirectory)/extension/*.vsix'
   

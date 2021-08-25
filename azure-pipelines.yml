@@ -73,5 +73,5 @@ stages:
         connectTo: 'VsTeam'
         connectedServiceName: 'Visual Studio Marketplace Service Connection'
         fileType: 'vsix'
-        vsixFile: '$(Build.ArtifactStagingDirectory)'
+        vsixFile: '$(Build.ArtifactStagingDirectory)/*.vsix'
   

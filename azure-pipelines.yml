@@ -60,7 +60,6 @@ stages:
       demands: npm
     
     steps:
-    - task
     - task: NodeTool@0
       inputs:
         versionSpec: '10.x'

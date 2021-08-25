@@ -35,7 +35,7 @@ stages:
       - task: PackageAzureDevOpsExtension@3
         inputs:
           rootFolder: '$(Build.SourcesDirectory)'
-          outputPath: '$(Build.ArtifactStagingDirectory)'
+          outputPath: '$(System.DefaultWorkingDirectory)/extension'
           publisherId: 'dimaros'
           updateTasksVersion: true
           extensionVisibility: 'private'

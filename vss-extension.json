@@ -10,7 +10,15 @@
         }
     ],
     "categories": [
-        "Azure Repos"
+        "Azure Pipelines"
+    ],
+    "icons":{
+        "default": "images/dimaros-logo.png"
+    },
+    "files":[
+        {
+            "path": "buildandreleasetask"
+        }
     ],
     "content": {
         "details": {
@@ -26,5 +34,18 @@
     },
     "scopes":[
         "vso.code_write"
+    ],
+    "contributions": [
+        {
+            "id": "custom-build-release-task",
+            "type": "ms.vss-distributed-task.task",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "buildAndReleaseTask"
+            }
+
+        }
     ]
 }

@@ -1,7 +1,10 @@
 trigger:
 - main
 
-jobs:
+stages:
+- stage: 'Build'
+  displayName: 'Build'
+  jobs:
   - job: Build
     displayName: "Build"
     pool:
@@ -37,10 +40,31 @@ jobs:
           updateTasksVersion: true
           extensionVisibility: 'private'
           extensionPricing: 'free'
-          zipAfterPublish: true
+          zipAfterPublish: false
 
       - task: PublishBuildArtifacts@1
         displayName: "Publish Artifact"
         inputs:
           PathtoPublish: '$(Build.ArtifactStagingDirectory)'
         condition: succeededOrFailed()
+
+- stage: Publish
+  displayName: 'Publish to Marketplace'
+  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/main'))
+  dependsOn: 'Build'
+  jobs:
+  - job: Publish
+    displayName: "Publish"
+    pool:
+      name: Azure Pipelines
+      vmImage: "windows-2019"
+      demands: npm
+    
+    steps:
+    - task: PublishAzureDevOpsExtension@3
+      inputs:
+        connectTo: 'VsTeam'
+        connectedServiceName: 'Visual Studio Marketplace Service Connection'
+        fileType: 'vsix'
+        vsixFile: '$(Build.ArtifactStagingDirectory)'
+  

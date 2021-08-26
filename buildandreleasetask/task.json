@@ -15,12 +15,36 @@
     "instanceNameFormat": "Echo Wiki Taxonomy Generator",
     "inputs": [
         {
-            "name": "samplestring",
+            "name": "root",
             "type": "string",
-            "label": "Sample String",
+            "label": "Path to the Wiki",
             "defaultValue": "",
             "required": true,
-            "helpMarkDown": "A sample string"
+            "helpMarkDown": "Enter the path to the Wiki"
+        },
+        {
+            "name": "headerStart",
+            "type": "string",
+            "label": "Start of the Taxonomy Header",
+            "defaultValue": "",
+            "required": true,
+            "helpMarkDown": "How should a Taxonomy Header start? for example: **_Taxonomy Header_**"
+        },
+        {
+            "name": "taxonomyPath",
+            "type": "string",
+            "label": "Path to the Taxonomy",
+            "defaultValue": "",
+            "required": false,
+            "helpMarkDown": "Enter the path to the Taxonomy (default: '/Taxonomy')"
+        },
+        {
+            "name": "headerEnd",
+            "type": "string",
+            "label": "End of the Taxonomy Header",
+            "defaultValue": "",
+            "required": false,
+            "helpMarkDown": "How should a Taxonomy Header end? (default: equal to headerStart)"
         }
     ],
     "execution": {

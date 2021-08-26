@@ -12,7 +12,7 @@
         "Minor": 1,
         "Patch": 0
     },
-    "instanceNameFormat": "Echo Wiki Taxonomy Generator",
+    "instanceNameFormat": "Generate Wiki Taxonomy",
     "inputs": [
         {
             "name": "root",
@@ -34,7 +34,7 @@
             "name": "taxonomyPath",
             "type": "string",
             "label": "Path to the Taxonomy",
-            "defaultValue": "",
+            "defaultValue": "/Taxonomy",
             "required": false,
             "helpMarkDown": "Enter the path to the Taxonomy (default: '/Taxonomy')"
         },

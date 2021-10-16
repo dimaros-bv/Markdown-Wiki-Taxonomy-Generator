@@ -48,8 +48,12 @@
         }
     ],
     "execution": {
-        "Node10": {
-            "target": "index.js"
+        "PowerShell3": {
+            "target": "powershell.ps1",
+            "platforms": [
+                "windows"
+            ],
+            "workingDirectory": "$(currentDirectory)"
         }
     }
 }

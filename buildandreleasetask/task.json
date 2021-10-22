@@ -34,9 +34,9 @@
             "name": "taxonomyPath",
             "type": "string",
             "label": "Path to the Taxonomy",
-            "defaultValue": "/Taxonomy",
+            "defaultValue": "Taxonomy",
             "required": false,
-            "helpMarkDown": "Enter the path to the Taxonomy (default: '/Taxonomy')"
+            "helpMarkDown": "Enter the path to the Taxonomy (default: 'Taxonomy')"
         },
         {
             "name": "headerEnd",

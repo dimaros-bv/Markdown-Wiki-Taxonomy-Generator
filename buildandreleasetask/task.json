@@ -1,0 +1,59 @@
+{
+    "$schema": "https://raw.githubusercontent.com/Microsoft/azure-pipelines-task-lib/master/tasks.schema.json",
+    "id": "79d6a6a6-bf29-48b8-95e9-2f6f8acfda13",
+    "name": "WikiTaxonomyGenerator",
+    "friendlyName": "Markdown Wiki Taxonomy Generator",
+    "description": "This tool generates tables of content for pages with a taxonomy header.",
+    "helpMarkDown": "",
+    "category": "Utility",
+    "author": "Dimaros B.V.",
+    "version": {
+        "Major": 0,
+        "Minor": 1,
+        "Patch": 0
+    },
+    "instanceNameFormat": "Generate Wiki Taxonomy",
+    "inputs": [
+        {
+            "name": "root",
+            "type": "string",
+            "label": "Path to the Wiki",
+            "defaultValue": "",
+            "required": true,
+            "helpMarkDown": "Enter the path to the Wiki"
+        },
+        {
+            "name": "headerStart",
+            "type": "string",
+            "label": "Start of the Taxonomy Header",
+            "defaultValue": "",
+            "required": true,
+            "helpMarkDown": "How should a Taxonomy Header start? for example: **_Taxonomy Header_**"
+        },
+        {
+            "name": "taxonomyPath",
+            "type": "string",
+            "label": "Path to the Taxonomy",
+            "defaultValue": "/Taxonomy",
+            "required": false,
+            "helpMarkDown": "Enter the path to the Taxonomy (default: '/Taxonomy')"
+        },
+        {
+            "name": "headerEnd",
+            "type": "string",
+            "label": "End of the Taxonomy Header",
+            "defaultValue": "",
+            "required": false,
+            "helpMarkDown": "How should a Taxonomy Header end? (default: equal to headerStart)"
+        }
+    ],
+    "execution": {
+        "PowerShell3": {
+            "target": "powershell.ps1",
+            "platforms": [
+                "windows"
+            ],
+            "workingDirectory": "$(currentDirectory)"
+        }
+    }
+}

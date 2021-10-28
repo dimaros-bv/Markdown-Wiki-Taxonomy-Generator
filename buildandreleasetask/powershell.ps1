@@ -9,29 +9,32 @@ function BuildTaxonomy {
 
     $currentLocation = Get-Location
     $dllLocation = Join-Path -Path $currentLocation -ChildPath "WikiTaxonomyGenerator\bin\Release\netcoreapp3.1\WikiTaxonomyGenerator.dll"
+    #$dllLocation = Join-Path -Path $currentLocation -ChildPath "WikiTaxonomyGenerator\bin\Release\netcoreapp3.1\wronglocation.dll"
 
+    Set-Location -Path "D:\a\1\s"
     git init
 
-    $result = Get-ChildItem -Path "D:\a\1\s"
+    # Actual path to the taxonomy
+    $pathToTaxonomy = Join-Path -Path "D:\a\1\s\" -ChildPath $taxonomyPath
+
+    $result = Get-ChildItem -Path $pathToTaxonomy
     Write-Host "Result before deletion $result"
 
     # Remove old taxonomy
-    Get-ChildItem -Path "D:\a\1\s\" -Directory -Filter $taxonomyPath | Remove-Item -Recurse -Confirm:$false -Force -Verbose
+    Get-ChildItem -Path $pathToTaxonomy | Remove-Item -Recurse -Confirm:$false -Force -Verbose
 
-    $result = Get-ChildItem -Path "D:\a\1\s"
+    $result = Get-ChildItem -Path $pathToTaxonomy
     Write-Host "Result after deletion $result"
 
     # Create new taxonomy
-    Set-Location -Path "D:\a\1\s\"
+    dotnet $dllLocation --root "D:\a\1\s" --taxonomy-path "Taxonomy" --header-start $headerStart --header-end $headerEnd
 
-    dotnet $dllLocation --root $root --header-start $headerStart --header-end $headerEnd
-
-    $result = Get-ChildItem -Path "D:\a\1\s"
+    $result = Get-ChildItem -Path $pathToTaxonomy
     Write-Host "Result after generation $result"
 
     Write-Host "-----------------------------------------------------------------------------"
-    Write-Host "View of the total directory"
-    Get-ChildItem -Path $dllLocation -Recurse
+    Write-Host "View of the taxonomy directory"
+    Get-ChildItem -Path "D:\a\1\s\" -Recurse
     Write-Host "-----------------------------------------------------------------------------"
 
     # Commit Changes
@@ -40,8 +43,8 @@ function BuildTaxonomy {
     git config user.email "-"
     git add Taxonomy
     git commit -m "Generated Taxonomies"
-    git checkout -b markdown-extension-test
-    git push origin markdown-extension-test
+    git checkout -b taxonomy-generator-test
+    git push origin taxonomy-generator-test
 }
 
 BuildTaxonomy

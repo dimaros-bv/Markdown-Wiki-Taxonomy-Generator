@@ -27,7 +27,7 @@ function BuildTaxonomy {
     Write-Host "Result after deletion $result"
 
     # Create new taxonomy
-    dotnet $dllLocation --root "D:\a\1\s" --taxonomy-path "Taxonomy" --header-start $headerStart --header-end $headerEnd
+    dotnet $dllLocation --root "D:\a\1\s" --header-start $headerStart --header-end $headerEnd
 
     $result = Get-ChildItem -Path $pathToTaxonomy
     Write-Host "Result after generation $result"

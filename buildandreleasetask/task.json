@@ -45,6 +45,14 @@
             "defaultValue": "",
             "required": false,
             "helpMarkDown": "How should a Taxonomy Header end? (default: equal to headerStart)"
+        },
+        {
+            "name": "branch",
+            "type": "string",
+            "label": "Branch to use",
+            "defaultValue": "main",
+            "required": false,
+            "helpMarkDown": "What git branch to apply the taxonomy generator to?"
         }
     ],
     "execution": {

@@ -6,33 +6,31 @@ function BuildTaxonomy {
     $taxonomyPath = Get-VstsInput -Name 'taxonomyPath'
     $headerStart = Get-VstsInput -Name 'headerStart'
     $headerEnd = Get-VstsInput -Name 'headerEnd'
-
-    $branchName = "$(Build.SourceBranch)" -replace "refs/heads",""
-    Write-Host "Current branch name: $branchName"
+    $branch = Get-VstsInput -Name 'branch'
 
     $currentLocation = Get-Location
 
     $dllLocation = Join-Path -Path $currentLocation -ChildPath "WikiTaxonomyGenerator\bin\Release\netcoreapp3.1\WikiTaxonomyGenerator.dll"
 
-    Set-Location -Path "D:\a\1\s"
+    Set-Location -Path $root
     git init
 
     # Remove old taxonomy
-    $pathToTaxonomy = Join-Path -Path "D:\a\1\s\" -ChildPath $taxonomyPath
+    $pathToTaxonomy = Join-Path -Path ($root + '/') -ChildPath $taxonomyPath
 
     Get-ChildItem -Path $pathToTaxonomy | Remove-Item -Recurse -Confirm:$false -Force -Verbose
 
     # Create new taxonomy
-    dotnet $dllLocation --root "D:\a\1\s" --header-start $headerStart --header-end $headerEnd
+    dotnet $dllLocation --root $root --header-start $headerStart --header-end $headerEnd
 
     # Commit Changes
     git status
     git config user.name "Taxonomy Generator"
     git config user.email "-"
-    git add Taxonomy
+    git add $taxonomyPath
     git commit -m "Generated Taxonomies"
-    git checkout -b taxonomy-generator-test
-    git push origin taxonomy-generator-test
+    git checkout -b $branch
+    git push origin $branch
 }
 
 BuildTaxonomy

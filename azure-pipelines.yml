@@ -59,7 +59,7 @@ stages:
     
 - stage: 'Publish'
   displayName: 'Publish to Marketplace'
-  dependsOn: Test
+  dependsOn: Build
   jobs:
   - job: Publish
     displayName: "Publish"

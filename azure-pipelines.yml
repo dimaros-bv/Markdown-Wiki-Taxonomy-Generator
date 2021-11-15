@@ -49,11 +49,28 @@ stages:
           PathtoPublish: '$(Build.ArtifactStagingDirectory)'
           ArtifactName: 'vsix'
         condition: succeededOrFailed()
-      
-- stage: Publish
-  displayName: 'Publish to Marketplace'
-  #condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/main'))
+
+- stage: 'Test'
+  displayName: 'Testing'
   dependsOn: 'Build'
+  jobs:
+  - job:
+    displayName: "Testing"
+    pool:
+      name: Azure Pipelines
+      vmImage: "windows-2019"
+      demands: npm
+    
+    steps:
+    - task: DotNetCoreCLI@2
+      inputs:
+        command: test
+        projects: '**/*Tests/*.csproj'
+        arguments: '--configuration Release'
+
+- stage: 'Publish'
+  displayName: 'Publish to Marketplace'
+  dependsOn: Test
   jobs:
   - job: Publish
     displayName: "Publish"

@@ -1,4 +1,4 @@
-name: '1.0$(Rev:.r)'
+name: '1.1$(Rev:.r)'
 
 trigger:
 - main
@@ -27,6 +27,13 @@ stages:
           projects: '**/**/*.csproj'
           arguments: '--configuration Release'
 
+      - task: DotNetCoreCLI@2
+        displayName: Test
+        inputs:
+          command: test
+          projects: '**/*Tests/*.csproj'
+          arguments: '--configuration Release'
+
       - task: NodeTool@0
         inputs:
           versionSpec: '10.x'
@@ -49,25 +56,7 @@ stages:
           PathtoPublish: '$(Build.ArtifactStagingDirectory)'
           ArtifactName: 'vsix'
         condition: succeededOrFailed()
-
-- stage: 'Test'
-  displayName: 'Testing'
-  dependsOn: 'Build'
-  jobs:
-  - job:
-    displayName: "Testing"
-    pool:
-      name: Azure Pipelines
-      vmImage: "windows-2019"
-      demands: npm
     
-    steps:
-    - task: DotNetCoreCLI@2
-      inputs:
-        command: test
-        projects: '**/*Tests/*.csproj'
-        arguments: '--configuration Release'
-
 - stage: 'Publish'
   displayName: 'Publish to Marketplace'
   dependsOn: Test
